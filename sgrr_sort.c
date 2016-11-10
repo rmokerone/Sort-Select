@@ -11,7 +11,44 @@
 /************************************************************************/
 
 #include "sgrr_sort.h"
+static int partition(int arr[], int l,int r);
 
+/**
+  * @brief  Quick sort for integer sequence
+  * @param  arr[]: the sequence need to be sort.
+  * @param  l: the left index of sequence.
+  * @param  r: the right index of sequence.
+  * @retval None
+*/
+void QuickSort_int(int arr[], int l, int r)
+{
+    int j;
+    if(l < r){
+        j = partition(arr, l, r);
+        QuickSort_int(arr, l, j-1);
+        QuickSort_int(arr, j+1, r);
+    }
+}
+
+static int partition(int arr[], int l,int r)
+{
+    int pivot, i, j, t;
+    pivot = arr[l];
+    i = l; j = r + 1;
+    
+    while(1)
+    {
+        do ++i;
+        while(arr[i] <= pivot && i <= r);
+        do --j;
+        while(arr[j] > pivot);
+        if(i >= j)
+            break;
+        t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    t = arr[l]; arr[l] = arr[j]; arr[j] = t;
+    return j;
+}
 
 /**
   * @brief  Insertion sort for integer sequence

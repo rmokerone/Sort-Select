@@ -12,8 +12,10 @@
 #define __SGRR_SORT_H
 
 /* Sort function  *******************************************************/
+void QuickSort_int(int arr[], int r, int l);
 void InsertionSort_int(int arr[], int len);
 void InsertionSort_float(float arr[], int len);
+
 
 
 /*  Select function *****************************************************/
